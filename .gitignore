@@ -603,4 +603,6 @@ TSWLatexianTemp*
 .history
 .ionide
 
+dataset/*
+
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij+all,visualstudiocode,goland+all,goland,go,latex
