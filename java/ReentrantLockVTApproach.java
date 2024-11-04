@@ -3,8 +3,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class ReentrantLockApproach extends ConcurrencyStrategy {
-
+public class ReentrantLockVTApproach extends VirtualThreadsConcurrencyStrategy {
     private final Map<String, Record> results = new HashMap<>();
     private final ReentrantLock lock = new ReentrantLock();
 
@@ -32,6 +31,6 @@ public class ReentrantLockApproach extends ConcurrencyStrategy {
 
     @Override
     public String getApproachName() {
-        return "ReentrantLock";
+        return "ReentrantLock Virtual Threads";
     }
 }

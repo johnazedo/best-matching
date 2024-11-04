@@ -19,5 +19,4 @@ public class VolatileApproach extends ConcurrencyStrategy {
     public String getApproachName() {
         return "Volatile";
     }
-    
 }

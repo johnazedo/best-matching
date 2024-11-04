@@ -1,1 +1,1 @@
-javac -d ./java/out ./java/*.java && java -cp ./java/out Main
+javac -d ./java/out ./java/*.java && java -XX:+FlightRecorder -cp ./java/out Main

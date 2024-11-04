@@ -80,4 +80,5 @@ if __name__ == "__main__":
         writer.writerow(["Book Name", "Chapter", "Paragraph_ID", "Paragraph"])  # Write header
 
     # Process books listed in the input CSV and append the output to the same CSV
-    process_books_from_csv(input_csv, output_csv)
+    for i in range(2):
+        process_books_from_csv(input_csv, output_csv)

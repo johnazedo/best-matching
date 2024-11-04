@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class AtomicApproach extends ConcurrencyStrategy {
+public class AtomicVTApproach extends VirtualThreadsConcurrencyStrategy {
     private final ConcurrentHashMap<String, Record> results = new ConcurrentHashMap<>();
 
     @Override

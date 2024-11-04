@@ -7,16 +7,14 @@ class Main {
         
         List<String> inputSentences = List.of(
             "Machine learning basics and algorithms",
-            "Deep learning architectures and neural networks in modern AI",
-            "Applications of statistical methods in machine learning and data science",
             "Understanding natural language processing techniques for sentiment analysis",
             "Downsizing in response to increasing competition in the food industry often has pushed the responsibility for ingredient quality to the suppliers",
             "There is an important opportunity here, and some might say an integral one, to include participants in the research process"
         );
-
-
-        Strategy approach = new AtomicApproach();
+        
+        Strategy approach = new ReentrantLockVTApproach();
         approach.runBestMatching(records, inputSentences);
+
         approach.getBestMatching().forEach((input, record) -> {
             System.out.println("Sentence: " + input);
             if(record.similarity > 0.0) {

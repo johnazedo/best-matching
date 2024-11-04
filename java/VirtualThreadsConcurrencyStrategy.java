@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ConcurrencyStrategy extends Strategy {
+public abstract class VirtualThreadsConcurrencyStrategy extends Strategy{
 
-    protected final static int NUM_OF_THREADS = 8;
+    protected final static int NUM_OF_THREADS = 512;
 
     protected List<List<Record>> divideListIntoChunks(List<Record> records) {
         List<List<Record>> chunks = new ArrayList<>();
@@ -29,9 +29,8 @@ public abstract class ConcurrencyStrategy extends Strategy {
         List<Thread> threads = new ArrayList<>();
 
         for(List<Record> chunk: chunks) {
-            Thread thread = new Thread(() -> { run(chunk, inputSentences); });
+            Thread thread = Thread.ofVirtual().start(() -> { run(chunk, inputSentences); });
             threads.add(thread);
-            thread.start();
         }
 
         try {

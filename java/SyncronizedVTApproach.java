@@ -1,26 +1,20 @@
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.ReentrantLock;
 
-public class ReentrantLockApproach extends ConcurrencyStrategy {
+public class SyncronizedVTApproach extends VirtualThreadsConcurrencyStrategy {
 
     private final Map<String, Record> results = new HashMap<>();
-    private final ReentrantLock lock = new ReentrantLock();
 
     @Override
     public void run(List<Record> records, List<String> inputSentences) {
-        for (String sentence : inputSentences) {
+        for(String sentence: inputSentences) {
             Record record = this.getBestMatchingByInputSentence(records, sentence);
-
-            lock.lock();
-            try {
+            synchronized (this) {
                 if(results.containsKey(sentence)) {
                     if(results.get(sentence).similarity > record.similarity) return;
                 }
                 results.put(sentence, record);
-            } finally {
-                lock.unlock();
             }
         }
     }
@@ -32,6 +26,7 @@ public class ReentrantLockApproach extends ConcurrencyStrategy {
 
     @Override
     public String getApproachName() {
-        return "ReentrantLock";
+        return "Syncronized Virtual Threads";
     }
+    
 }

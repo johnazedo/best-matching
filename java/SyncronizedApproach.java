@@ -11,12 +11,10 @@ public class SyncronizedApproach extends ConcurrencyStrategy{
         for(String sentence: inputSentences) {
             Record record = this.getBestMatchingByInputSentence(records, sentence);
             synchronized (this) {
-                results.compute(sentence, (key, existingRecord) -> {
-                    if (existingRecord == null || record.similarity > existingRecord.similarity) {
-                        return record;
-                    }
-                    return existingRecord;
-                });
+                if(results.containsKey(sentence)) {
+                    if(results.get(sentence).similarity > record.similarity) return;
+                }
+                results.put(sentence, record);
             }
         }
     }
