@@ -18,16 +18,15 @@ public class FutureExecutorApproach extends Strategy {
                 results.merge(sentence, record, (existingRecord, newRecord) -> 
                     (existingRecord.similarity > newRecord.similarity) ? existingRecord : newRecord
                 );
-                return null; // Callable requires a return value
+                return null;
             }));
         }
 
-        // Wait for all tasks to complete
         for (Future<Void> future : futures) {
             try {
-                future.get(); // Block until the task is done
+                future.get();
             } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace(); // Handle exceptions as necessary
+                e.printStackTrace();
             }
         }
     }

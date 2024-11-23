@@ -15,7 +15,7 @@ public abstract class VirtualThreadsConcurrencyStrategy extends Strategy{
         return chunks;
     }
 
-    protected  int getChunkSizeByNumberOfThread(int totalSize) {
+    protected int getChunkSizeByNumberOfThread(int totalSize) {
         int chunkSize = (int) Math.ceil((double) totalSize / NUM_OF_THREADS);
         return chunkSize;
     }
